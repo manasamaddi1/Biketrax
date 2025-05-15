@@ -1,17 +1,195 @@
-html,
+/* === GLOBAL AESTHETIC STYLING FOR BIKE VIBE === */
+
+
+
 body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
-  padding: 5px;
-  height: 100%;
-  width: 100%;
+  padding: 1em;
+  background: #f9fbfd;
+  color: #222;
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center;     /* Center vertically */
+  flex-direction: column;
+  align-items: center;
+}
+
+p.description {
+  font-size: 1.1rem;
+  color: #444;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 1.5em auto;
+  padding: 0.5em 1em;
+  background: linear-gradient(to right, #f0f4ff, #f8fcff);
+  border-left: 5px solid #0077cc;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 119, 204, 0.05);
+}
+
+/* === PARAGRAPH DESCRIPTION STYLING === */
+.description {
+  max-width: 800px;
+  margin: 1.5em auto 2em auto;
+  padding: 0.75em 1.5em;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #333;
+  text-align: center;
+  background: linear-gradient(to right, #e8f4ff, #f4fbff);
+  border-left: 5px solid #0077cc;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 119, 204, 0.08);
+  font-weight: 450;
+  letter-spacing: 0.15px;
+}
+
+
+
+h1 {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  font-size: 2.25rem;
+  margin-bottom: 0.2em;
+}
+
+header {
+  display: flex;
+  align-items: baseline;
+  gap: 1em;
+  width: 100%;
+  max-width: 900px;
+  justify-content:space-between
+}
+
+header label {
+  margin-left: auto;
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.3em;
+  color: #333;
+}
+
+#time-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 600px;
+  height: 10px;
+  background: #e6e6e6;
+  border-radius: 50px;
+  outline: none;
+  transition: background 0.3s;
+  cursor: pointer;
+}
+
+#time-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #0077cc;
+  border: 3px solid white;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s;
+}
+
+#time-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #0077cc;
+  border: 3px solid white;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+#current-time {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #222;
+}
+
+#anytime {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: #888;
+}
+
+
+p {
+  max-width: 800px;
+  text-align: center;
+  line-height: 1.6;
+  margin-bottom: 1em;
+  font-size: 1.05rem;
 }
 
 #map {
-  width: 100%;  /* You can adjust this later if needed */
+  position: relative;
+  width: 100%;
+  max-width: 1300px; /* Was 1000px */
+  height: 75vh;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#map svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  border-radius: 8px; /* Rounded corners */
+  pointer-events: none;
+  z-index: 2; /* Ensures it's on top of the Mapbox canvas */
+}
+
+
+#map svg circle {
+  pointer-events: auto;
+  stroke: white;
+  stroke-width: 1px;
+  fill: var(--color);
+  fill-opacity: 0.6;
+  --color-departures: steelblue;
+  --color-arrivals: darkorange;
+  --color: color-mix(
+    in oklch,
+    var(--color-departures) calc(100% * var(--departure-ratio)),
+    var(--color-arrivals)
+  );
+}
+
+/* === LEGEND STYLING === */
+.legend {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1px;
+  width: 100%;
+  max-width: 600px;
+  margin-block: 1em;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: white;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.legend > div {
+  flex: 1;
+  padding: 0.5em 1.25em;
+  text-align: center;
+  background-color: var(--color);
+  --color-departures: steelblue;
+  --color-arrivals: darkorange;
+  --color: color-mix(
+    in oklch,
+    var(--color-departures) calc(100% * var(--departure-ratio)),
+    var(--color-arrivals)
+  );
 }

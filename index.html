@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bikewatching</title>
+    <title>BikeTrax</title>
 
     <!-- Global Styles -->
     <link rel="stylesheet" href="global.css" />
@@ -23,13 +23,32 @@
   </head>
 
   <body>
-    <h1>🚴🏼‍♀️ Bikewatching</h1>
-    <p>
-      An interactive geospatial visualization of Boston’s BlueBike traffic,
-      powered by Mapbox and real-time data filters.
-    </p>
+    <!-- Header with title and time filter -->
+    <header>
+      <h1>🚴🏼‍♀️ <strong>BikeTrax</strong></h1>
+      <label>
+        Filter by time:
+        <input id="time-slider" type="range" min="-1" max="1440" value="-1" />
+        <time id="current-time"></time>
+        <em id="anytime">(any time)</em>
+      </label>
+    </header>
+
+    <p class="description">
+  An interactive geospatial visualization of Boston’s BlueBike traffic, <br>powered by Mapbox and real-time data filters.
+</p>
+
 
     <!-- Map Container -->
-    <div id="map"></div>
+    <div id="map">
+      <svg></svg>
+    </div>
+
+    <!-- Legend -->
+    <div class="legend">
+      <div style="--departure-ratio: 1">More departures</div>
+      <div style="--departure-ratio: 0.5">Balanced</div>
+      <div style="--departure-ratio: 0">More arrivals</div>
+    </div>
   </body>
 </html>
